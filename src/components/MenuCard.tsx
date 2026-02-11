@@ -8,9 +8,9 @@ const MenuCard = ({ item }: MenuCardProps) => {
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in">
       <div className="h-48 bg-muted overflow-hidden">
-        {item.image ? (
+        {item.image_url ? (
           <img
-            src={item.image}
+            src={item.image_url}
             alt={item.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
