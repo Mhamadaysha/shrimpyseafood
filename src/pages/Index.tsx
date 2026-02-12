@@ -35,7 +35,7 @@ const Index = () => {
         <img src={heroBg} alt="Seafood spread" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center px-4">
-          <img src={logo} alt="Shrimpy Seafood" className="w-28 h-28 mx-auto rounded-full object-cover shadow-2xl mb-4 border-4 border-gold/50" />
+          
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-2">Shrimpy Seafood</h1>
           <p className="font-body text-lg text-primary-foreground/80 italic">Fresh from the Sea to Your Table</p>
         </div>
