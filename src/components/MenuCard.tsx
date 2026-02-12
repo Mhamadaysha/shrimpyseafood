@@ -7,7 +7,7 @@ interface MenuCardProps {
 const MenuCard = ({ item }: MenuCardProps) => {
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in">
-      <div className="h-48 bg-muted overflow-hidden">
+      <div className="h-64 bg-muted overflow-hidden">
         {item.image_url ? (
           <img
             src={item.image_url}

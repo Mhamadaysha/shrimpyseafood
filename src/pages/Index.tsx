@@ -17,23 +17,29 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Navbar */}
+      <nav className="sticky top-0 z-50 bg-primary shadow-lg">
+        <div className="container mx-auto px-4 flex items-center justify-between h-16">
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Shrimpy Seafood" className="w-10 h-10 rounded-full object-cover border-2 border-gold" />
+            <span className="font-heading text-xl font-bold text-primary-foreground">Shrimpy Seafood</span>
+          </div>
+          <Link to="/admin" className="text-sm font-body font-semibold text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+            Admin
+          </Link>
+        </div>
+      </nav>
+
       {/* Hero */}
-      <header className="relative h-[420px] flex items-center justify-center overflow-hidden">
+      <header className="relative h-[380px] flex items-center justify-center overflow-hidden">
         <img src={heroBg} alt="Seafood spread" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center px-4">
-          <img src={logo} alt="Shrimpy Seafood" className="w-32 h-32 mx-auto rounded-full object-cover shadow-2xl mb-4 border-4 border-primary-foreground/30" />
+          <img src={logo} alt="Shrimpy Seafood" className="w-28 h-28 mx-auto rounded-full object-cover shadow-2xl mb-4 border-4 border-gold/50" />
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-2">Shrimpy Seafood</h1>
           <p className="font-body text-lg text-primary-foreground/80 italic">Fresh from the Sea to Your Table</p>
         </div>
       </header>
-
-      {/* Admin Link */}
-      <div className="container mx-auto px-4 pt-6 flex justify-end">
-        <Link to="/admin" className="text-sm font-body font-semibold text-ocean hover:text-primary transition-colors underline underline-offset-4">
-          Admin Panel
-        </Link>
-      </div>
 
       {/* Menu */}
       <main className="container mx-auto px-4 py-10">
