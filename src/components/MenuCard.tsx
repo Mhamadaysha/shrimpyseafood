@@ -6,31 +6,25 @@ interface MenuCardProps {
 
 const MenuCard = ({ item }: MenuCardProps) => {
   return (
-    <div className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in">
-      <div className="h-80 bg-muted overflow-hidden">
-        {item.image_url ? (
+    <div className="group bg-card/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 animate-fade-in flex flex-row items-stretch">
+      <div className="flex-1 p-4 flex flex-col justify-center min-w-0">
+        <h3 className="font-heading text-base font-bold text-card-foreground mb-1 truncate">{item.name}</h3>
+        {item.description && (
+          <p className="text-sm text-muted-foreground leading-snug line-clamp-2 mb-2">{item.description}</p>
+        )}
+        <span className="font-heading text-base font-bold text-gold">
+          ${item.price.toFixed(2)}
+        </span>
+      </div>
+      {item.image_url && (
+        <div className="w-28 h-28 m-3 rounded-lg overflow-hidden flex-shrink-0 bg-muted">
           <img
             src={item.image_url}
             alt={item.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-primary/10">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-primary/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
-        )}
-      </div>
-      <div className="p-5">
-        <div className="flex items-start justify-between gap-3 mb-2">
-          <h3 className="font-heading text-lg font-semibold text-card-foreground">{item.name}</h3>
-          <span className="font-heading text-lg font-bold text-coral whitespace-nowrap">
-            ${item.price.toFixed(2)}
-          </span>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-      </div>
+      )}
     </div>
   );
 };
