@@ -18,6 +18,7 @@ const Admin = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+  const [currency, setCurrency] = useState("USD");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState("");
 
@@ -48,6 +49,7 @@ const Admin = () => {
     setDescription("");
     setPrice("");
     setCategory("");
+    setCurrency("USD");
     setImageFile(null);
     setImagePreview("");
     setEditing(null);
@@ -79,14 +81,14 @@ const Admin = () => {
       if (editing) {
         const { error } = await supabase
           .from("menu_items")
-          .update({ name, description, price: parseFloat(price), category, image_url })
+          .update({ name, description, price: parseFloat(price), category, currency, image_url })
           .eq("id", editing.id);
         if (error) throw error;
         toast.success("Item updated!");
       } else {
         const { error } = await supabase
           .from("menu_items")
-          .insert({ name, description, price: parseFloat(price), category, image_url });
+          .insert({ name, description, price: parseFloat(price), category, currency, image_url });
         if (error) throw error;
         toast.success("Item added!");
       }
@@ -103,6 +105,7 @@ const Admin = () => {
     setDescription(item.description);
     setPrice(item.price.toString());
     setCategory(item.category);
+    setCurrency(item.currency || "USD");
     setImagePreview(item.image_url);
     setShowForm(true);
   };
@@ -179,6 +182,13 @@ const Admin = () => {
                 <input type="number" step="0.01" value={price} onChange={(e) => setPrice(e.target.value)} className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground font-body focus:ring-2 focus:ring-ocean focus:outline-none" />
               </div>
               <div>
+                <label className="block font-body text-sm font-semibold text-card-foreground mb-1">Currency *</label>
+                <select value={currency} onChange={(e) => setCurrency(e.target.value)} className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground font-body focus:ring-2 focus:ring-ocean focus:outline-none">
+                  <option value="USD">$ Dollar</option>
+                  <option value="LBP">L.L ليرة لبنانية</option>
+                </select>
+              </div>
+              <div>
                 <label className="block font-body text-sm font-semibold text-card-foreground mb-1">Photo</label>
                 <input type="file" accept="image/*" onChange={handleImageChange} className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground font-body text-sm file:mr-4 file:py-1 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-ocean/10 file:text-ocean" />
               </div>
@@ -219,7 +229,7 @@ const Admin = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-heading font-semibold text-card-foreground truncate">{item.name}</h3>
-                <p className="text-sm text-muted-foreground">{item.category} · ${item.price.toFixed(2)}</p>
+                <p className="text-sm text-muted-foreground">{item.category} · {item.currency === 'LBP' ? `${item.price.toLocaleString()} L.L` : `$${item.price.toFixed(2)}`}</p>
               </div>
               <div className="flex gap-2 flex-shrink-0">
                 <button onClick={() => handleEdit(item)} className="p-2 rounded-lg bg-ocean/10 text-ocean hover:bg-ocean/20 transition-colors">

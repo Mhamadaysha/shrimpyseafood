@@ -6,7 +6,7 @@ interface CategoryFilterProps {
 
 const CategoryFilter = ({ categories, activeCategory, onSelect }: CategoryFilterProps) => {
   return (
-    <div className="flex flex-wrap gap-2 justify-center">
+    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide px-1">
       <button
         onClick={() => onSelect(null)}
         className={`px-5 py-2 rounded-full font-body text-sm font-semibold transition-all duration-200 ${
