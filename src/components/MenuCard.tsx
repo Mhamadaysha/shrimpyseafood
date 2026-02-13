@@ -10,10 +10,10 @@ const MenuCard = ({ item }: MenuCardProps) => {
       <div className="flex-1 p-4 flex flex-col justify-center min-w-0">
         <h3 className="font-heading text-base font-bold text-card-foreground mb-1 truncate">{item.name}</h3>
         {item.description && (
-          <p className="text-sm text-muted-foreground leading-snug line-clamp-2 mb-2">{item.description}</p>
+          <p className="text-sm text-muted-foreground leading-snug mb-2">{item.description}</p>
         )}
-        <span className="font-heading text-base font-bold text-gold">
-          ${item.price.toFixed(2)}
+        <span className="font-heading text-base font-bold text-coral">
+          {item.currency === 'LBP' ? `${item.price.toLocaleString()} L.L` : `$${item.price.toFixed(2)}`}
         </span>
       </div>
       {item.image_url && (

@@ -54,7 +54,7 @@ const Index = () => {
       {/* Menu */}
       <main className="container mx-auto px-4 py-10">
         <h2 className="font-heading text-3xl font-bold text-center text-foreground mb-2">Our Menu</h2>
-        <div className="w-16 h-1 bg-gold mx-auto rounded-full mb-8" />
+        <div className="w-16 h-1 bg-coral mx-auto rounded-full mb-8" />
 
         <div className="mb-10">
           <CategoryFilter categories={categories} activeCategory={activeCategory} onSelect={setActiveCategory} />
