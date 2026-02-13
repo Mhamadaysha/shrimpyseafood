@@ -35,9 +35,19 @@ const Index = () => {
         <img src={heroBg} alt="Seafood spread" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-primary/70" />
         <div className="relative z-10 text-center px-4">
-          
           <h1 className="font-heading text-4xl md:text-5xl font-bold text-primary-foreground mb-2">Shrimpy Seafood</h1>
-          <p className="font-body text-lg text-primary-foreground/80 italic">Fresh from the Sea to Your Table</p>
+          <p className="font-body text-lg text-primary-foreground/80 italic mb-4">Fresh from the Sea to Your Table</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-primary-foreground/80 text-sm font-body">
+            <a href="https://maps.google.com/?q=Wadi+Chahrour+oliya+Naddour+Village+Center" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+              Wadi Chahrour oliya - Naddour Village Center
+            </a>
+            <span className="hidden sm:inline text-primary-foreground/40">|</span>
+            <a href="tel:76777170" className="flex items-center gap-1.5 hover:text-primary-foreground transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              76 777170
+            </a>
+          </div>
         </div>
       </header>
 
@@ -53,7 +63,7 @@ const Index = () => {
         {isLoading ? (
           <p className="text-center text-muted-foreground py-20 font-body text-lg">Loading menu...</p>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
             {filtered.map((item) => (
               <MenuCard key={item.id} item={item} />
             ))}
